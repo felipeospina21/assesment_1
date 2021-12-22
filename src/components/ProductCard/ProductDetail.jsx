@@ -1,24 +1,23 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './ProductDetail.scss';
 
-const ProductDetail = () => {
-  // const [products, setProducts] = useState([]);
-  let params = useParams();
-  let product = getProduct(params.id);
-
-  function getProduct(id) {
-    params.products.find(product => product.id === id);
-  }
-
+const ProductDetail = props => {
   return (
-    <>
-      <div>
-        <h1>{product.title}</h1>
-        <p>{product.price}</p>
-        <p>{product.id}</p>
+    <div className='modal'>
+      <div className='modal__productDetail'>
+        <button onClick={props.handleClose}>X</button>
+        <h1>{props.product.title}</h1>
+        <p><strong>{`Price: $${props.product.price}`}</strong></p>
+        <p>{props.product.description}</p>
+        <img src={props.product.image} />
       </div>
-    </>
+    </div>
   );
 };
 
+ProductDetail.propTypes = {
+  product: PropTypes.object,
+  handleClose: PropTypes.func,
+};
 export default ProductDetail;

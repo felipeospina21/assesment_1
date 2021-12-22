@@ -1,32 +1,39 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useNavigate } from 'react-router-dom';
 import './ProductCard.scss';
 import Timer from './Timer';
+import ProductDetail from './ProductDetail';
 
 const ProductCard = props => {
-  const navigate = useNavigate();
   const [allowNav, setAllowNav] = useState(true);
+  const [showDetail, setShowDetail] = useState(false);
   const initCount = props.product.id % 2 === 0 ? 0 : 2;
 
   function handleClick() {
-    if (allowNav) {
-      navigate('/success', { replace: true });
-    }
+    setShowDetail(!showDetail);
   }
   return (
-    <div className='productCard'>
-      <h1>{props.product.title}</h1>
-      <img src={props.product.image} />
-      <Link to={`/detail/${props.product.id}`}>Detail</Link>
-      <button onClick={handleClick} disabled={!allowNav}>
-        navigate
-      </button>
-      <Timer
-        hoursMinSecs={{ hours: 0, minutes: initCount, seconds: 60 }}
-        setAllowNav={setAllowNav}
-      />
-    </div>
+    <>
+      <div className='productCard'>
+        <h1>{props.product.title}</h1>
+        <img src={props.product.image} />
+        <Timer
+          hoursMinSecs={{ hours: 0, minutes: initCount, seconds: 60 }}
+          setAllowNav={setAllowNav}
+        />
+        <button
+          onClick={handleClick}
+          disabled={!allowNav}
+          className={
+            allowNav ? 'productCard__btn' : 'productCard__btn-disabled'
+          }>
+          detail
+        </button>
+      </div>
+      {showDetail ? (
+        <ProductDetail product={props.product} handleClose={handleClick} />
+      ) : null}
+    </>
   );
 };
 

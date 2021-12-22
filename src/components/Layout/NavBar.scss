@@ -10,9 +10,9 @@
 .navBar__list {
   width: 360px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   list-style: none;
-  padding: 0;
+  padding: 0 1rem;
 
   & li {
     padding: 0.5rem;

@@ -1,0 +1,11 @@
+.aboutPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.aboutPage__infoContainer{
+    max-width: 1000px;
+    margin-top: 2rem;
+}

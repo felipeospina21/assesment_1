@@ -6,10 +6,9 @@ const Timer = props => {
   const [[hrs, mins, secs], setTime] = useState([hours, minutes, seconds]);
 
   const tick = () => {
-    if (hrs === 0 && mins === 0 && secs === 0){
-      props.setAllowNav(false)
-    }
-    else if (mins === 0 && secs === 0) {
+    if (hrs === 0 && mins === 0 && secs === 0) {
+      props.setAllowNav(false);
+    } else if (mins === 0 && secs === 0) {
       setTime([hrs - 1, 59, 59]);
     } else if (secs === 0) {
       setTime([hrs, mins - 1, 59]);
@@ -18,10 +17,10 @@ const Timer = props => {
     }
   };
 
-  const reset = () => {
-    // setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)]);
-    console.log('reset');
-  };
+  // const reset = () => {
+  //   // setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)]);
+  //   console.log('reset');
+  // };
 
   useEffect(() => {
     const timerId = setInterval(() => tick(), 1000);
