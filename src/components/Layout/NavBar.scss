@@ -1,0 +1,27 @@
+.navBar {
+  background-color: rgb(57, 58, 58);
+  height: 90px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navBar__list {
+  width: 360px;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+
+  & li {
+    padding: 0.5rem;
+    & a {
+      color: aliceblue;
+    }
+
+    &:hover {
+      background-color: goldenrod;
+    }
+  }
+}
